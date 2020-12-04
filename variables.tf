@@ -16,13 +16,18 @@ variable "ports" {
   type      = list(number)
   default   = []
 }
-variable "tags" {
+variable "target_tags" {
   type        = list(string)
   default     = []
   description = "A list of target tags for this firewall"
 }
+variable "source_tags" {
+  type        = list(string)
+  default     = []
+  description = "A list of source tags for this firewall"
+}
 variable "source_ranges" {
   type        = list(string)
-  default     = ["0.0.0.0/0"]
+  default     = []
   description = "A list of source CIDR range to apply this rule."
 }
