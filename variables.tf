@@ -31,3 +31,13 @@ variable "source_ranges" {
   default     = []
   description = "A list of source CIDR range to apply this rule."
 }
+variable "remote_vpcs" {
+  type        = list(string)
+  default     = []
+  description = "A list of remote vpcs."
+}
+variable "project" {
+  type          = string
+  default       = "tcp"
+  description   = "The name of the remote project"
+}

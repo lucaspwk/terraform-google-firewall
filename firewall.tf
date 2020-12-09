@@ -35,3 +35,15 @@ resource "google_compute_firewall" "allow-sourcetag" {
   source_tags = var.source_tags
   target_tags = var.target_tags
 }
+
+resource "google_compute_firewall" "allow-remotevpc" {
+  count       = length(var.remote_vpcs) != 0 ? length(var.remote_vpcs) : 0
+  name        = "vpc-${var.remote_vpcs[count.index]}-firewall-${var.rule-name}"
+  project     = var.project
+  network     = var.remote_vpcs[count.index]
+  allow {
+    protocol  = var.protocol
+    ports     = var.ports
+  }
+  source_ranges = var.source_ranges
+}
